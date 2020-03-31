@@ -40,7 +40,7 @@ public class Test1 {
         shopCustomer.isDiscount=true;
         shopCustomer.items = new String[] {"item1", "item2", "item3"};
 
-        System.out.println("Имя класса: " + shopCustomer.className);
+        System.out.println("Имя класса: " + ShopCustomer.className);
         System.out.println("shopCustomerName = "+shopCustomer.shopCustomerName);
         System.out.println("shopCustomerPhone = "+shopCustomer.shopCustomerPhone);
         System.out.println("isDiscount = "+shopCustomer.isDiscount);
