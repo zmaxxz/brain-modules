@@ -1,4 +1,4 @@
-package ua.zp.bainacad.lab5;
+package ua.zp.bainacad.lab7;
 
 /**
  * class PBook
