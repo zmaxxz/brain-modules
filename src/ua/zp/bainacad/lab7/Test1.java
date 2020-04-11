@@ -34,16 +34,16 @@ public class Test1 {
         System.out.println("phone = " + postOffice.phone);
 
 
-        ShopCustomer shopCustomer=new ShopCustomer();
-        shopCustomer.shopCustomerName="Сергей";
-        shopCustomer.shopCustomerPhone="06712345678";
-        shopCustomer.isDiscount=true;
-        shopCustomer.items = new String[] {"item1", "item2", "item3"};
+        ShopCustomer shopCustomer = new ShopCustomer();
+        shopCustomer.shopCustomerName = "Сергей";
+        shopCustomer.shopCustomerPhone = "06712345678";
+        shopCustomer.isDiscount = true;
+        shopCustomer.items = new String[]{"item1", "item2", "item3"};
 
         System.out.println("Имя класса: " + ShopCustomer.className);
-        System.out.println("shopCustomerName = "+shopCustomer.shopCustomerName);
-        System.out.println("shopCustomerPhone = "+shopCustomer.shopCustomerPhone);
-        System.out.println("isDiscount = "+shopCustomer.isDiscount);
-        System.out.println("items = "+ Arrays.toString(shopCustomer.items));
+        System.out.println("shopCustomerName = " + shopCustomer.shopCustomerName);
+        System.out.println("shopCustomerPhone = " + shopCustomer.shopCustomerPhone);
+        System.out.println("isDiscount = " + shopCustomer.isDiscount);
+        System.out.println("items = " + Arrays.toString(shopCustomer.items));
     }
 }

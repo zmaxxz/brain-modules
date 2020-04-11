@@ -2,13 +2,13 @@ package ua.zp.bainacad.lab7;
 
 /**
  * class PPostOffice - описание почтового отделения
- *
+ * <p>
  * поля класса:
  * final className - передает имя класса
- *     postNumber - номер почтового отделения
- *     postIndex - почтовый индекс
- *     postAddress - адресс расположения
- *     phone - контактный номер
+ * postNumber - номер почтового отделения
+ * postIndex - почтовый индекс
+ * postAddress - адресс расположения
+ * phone - контактный номер
  */
 
 public class PPostOffice {

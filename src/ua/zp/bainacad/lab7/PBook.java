@@ -2,20 +2,20 @@ package ua.zp.bainacad.lab7;
 
 /**
  * class PBook
- *
+ * <p>
  * поля класса:
  * final className - передает имя класса
- *     bookGenre - жанр книги
- *     bookAuthor - имя автора
- *     bookName - название книги
- *     publishingHouse - издательство
- *     publishYear - год издания
- *     pageCount - количество страниц
+ * bookGenre - жанр книги
+ * bookAuthor - имя автора
+ * bookName - название книги
+ * publishingHouse - издательство
+ * publishYear - год издания
+ * pageCount - количество страниц
  */
 
 
 public class PBook {
-    private static final String className="PBook";
+    private static final String className = "PBook";
     private String bookGenre;
     private String bookAuthor;
     private String bookName;
