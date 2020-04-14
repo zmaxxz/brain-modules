@@ -13,6 +13,7 @@ public class PassportUtil {
 
     /**
      * Статический метод <b>marriageRegistrate</b> инициализирует поля {@link Passport#spouseId} супругов, передавая номера паспортов друг-друга {@link Passport#id}
+     *
      * @param passport1 {@link Passport} первого, из супругов
      * @param passport2 {@link Passport} второго, из супругов
      */
