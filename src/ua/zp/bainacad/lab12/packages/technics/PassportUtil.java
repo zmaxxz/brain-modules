@@ -21,6 +21,6 @@ public class PassportUtil {
      * @param dateReplace дата замены по гарантии типа {@link java.util.Date}
      */
     public static void warrantyReplace(Passport passport, Date dateReplace) {
-        passport.setWarrantyStartDate(dateReplace);
+        passport.setWarrantyStartDate(new Date());
     }
 }
