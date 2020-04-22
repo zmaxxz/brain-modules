@@ -3,9 +3,6 @@ package ua.zp.bainacad.lab14.human;
 import java.util.Date;
 import java.util.Objects;
 
-import static ua.zp.bainacad.MyUtil.addObjectToArray;
-
-
 public class Human {
 
     private String fullName;
@@ -19,11 +16,11 @@ public class Human {
     }
 
     public void sayHello() {
-        System.out.println(fullName+" говорит ПРИВЕТ!");
+        System.out.println("\t"+fullName+" говорит ПРИВЕТ!\n");
     }
 
     public void sayGoodbye() {
-        System.out.println(fullName+" говорит ДО СВИДАНИЯ!");
+        System.out.println("\t"+fullName+" говорит ДО СВИДАНИЯ!\n");
     }
 
     public String getFullName() {

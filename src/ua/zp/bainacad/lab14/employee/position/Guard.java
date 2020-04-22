@@ -12,22 +12,24 @@ public class Guard extends Employee {
     }
 
     public Guard(Human human) {
-        super(human.getFullName(),human.getPhoneNumber());
+        super(human.getFullName(), human.getPhoneNumber());
     }
 
     public void speakToRadioSet() {
-        System.out.println("охранник говорит по рации");
+        System.out.println("\t\t\t\tговорит по рации");
     }
 
     @Override
-    public void doWork() {
-
-        System.out.println(" охранник делает работу ");
-        speakToRadioSet();
+    public void doWork(String str) {
+        if (str == "охранник сделай что нибудь") {
+            System.out.println("\t\t\tОхранник " + getFullName() + " делает работу");
+            speakToRadioSet();
+            System.out.println();
+        }
     }
 
     @Override
     public String toString() {
-        return "Guard{"+super.toString()+"} ";
+        return "Guard{" + super.toString() + "} ";
     }
 }

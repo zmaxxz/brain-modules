@@ -1,10 +1,14 @@
 package ua.zp.bainacad.lab14.customer;
 
 import ua.zp.bainacad.lab14.human.Human;
+import ua.zp.bainacad.lab14.shop.Shop;
 
 import java.util.Date;
 import java.util.Objects;
 
+/**
+ * Класс
+ */
 public class Customer extends Human {
     private static int cardCount = 0;
     private int cardDiscount;
@@ -17,16 +21,21 @@ public class Customer extends Human {
         this.cardDiscount = cardCount;
     }
 
+
     public Customer(Human human) {
         this(human.getFullName(), human.getPhoneNumber());
     }
 
-    public void knowAboutGoods() {
-        System.out.println("клиент узнает про товары");
+    public String knowAboutGoods() {
+        String str="узнает про товары";
+        System.out.println("\t\t"+this.getFullName()+" "+str);
+        return str;
     }
 
-    public void buyGoods() {
-        System.out.println("клиент покупает товар");
+    public String buyGoods() {
+        String str="покупает товар";
+        System.out.println("\t\t"+this.getFullName()+" "+str);
+        return str;
     }
 
     public int getCardDiscount() {

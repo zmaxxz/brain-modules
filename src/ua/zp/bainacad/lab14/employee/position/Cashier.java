@@ -18,14 +18,16 @@ public class Cashier extends Employee {
     }
 
     public void countMoney() {
-        System.out.println("кассир считает деньги");
+        System.out.println("\t\t\t\tсчитает деньги");
     }
 
     @Override
-    public void doWork() {
-        super.doWork();
-        System.out.println(" кассир делает работу ");
-        countMoney();
+    public void doWork(String str) {
+        if (str=="покупает товар"){
+            System.out.println("\t\t\tКассир "+this.getFullName()+" делает работу");
+            countMoney();
+            System.out.println();
+        }
     }
 
     public Integer getCashboxNumber() {

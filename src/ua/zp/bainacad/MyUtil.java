@@ -13,8 +13,8 @@ public class MyUtil {
     public static <T> T[] addObjectToArray(T[] arrayObject, T addObject) {
 
         for (int i = 0; i < arrayObject.length; i++) {
-            if (arrayObject[i]==null){
-                arrayObject[i]=addObject;
+            if (arrayObject[i] == null) {
+                arrayObject[i] = addObject;
                 return arrayObject;
             }
         }
@@ -39,17 +39,15 @@ public class MyUtil {
             System.out.println("ArrayList<>=null");
             return;
         }
-        System.out.println("ArrayList<"+arrayObject.get(0).getClass().getSimpleName()+">");
-
         for (int i = 0; i < arrayObject.size(); i++) {
             System.out.println(arrayObject.get(i).toString());
         }
         System.out.println();
     }
 
-    public static <T,U> int getIdFromArrayObjectByObject(T[] arrayObject, U objectFind) {
+    public static <T, U> int getIdFromArrayObjectByObject(T[] arrayObject, U objectFind) {
         for (int i = 0; i < arrayObject.length; i++) {
-            if(arrayObject[i]!=null) {
+            if (arrayObject[i] != null) {
                 if (arrayObject[i].hashCode() == objectFind.hashCode()) {
                     return i;
                 }
@@ -58,9 +56,30 @@ public class MyUtil {
         return -1;
     }
 
-    public static <T,U> int getIdFromArrayObjectByClass(T[] arrayObject, U classFind) {
+    public static <T, U> int getIdFromArrayListObjectByObject(ArrayList<T> arrayListObject, U objectFind) {
+        if (arrayListObject.size() != 0) {
+            for (int i = 0; i < arrayListObject.size(); i++) {
+                if (arrayListObject.get(i) != null) {
+                    if (arrayListObject.get(i).hashCode() == objectFind.hashCode()) {
+                        return i;
+                    }
+                }
+            }
+        }
+        return -1;
+    }
+
+    public static <T, U> int getIdFromArrayObjectByClass(T[] arrayObject, U classFind) {
         for (int i = 0; i < arrayObject.length; i++) {
-            if (arrayObject[i].getClass()==classFind)
+            if (arrayObject[i].getClass() == classFind)
+                return i;
+        }
+        return -1;
+    }
+
+    public static <T, U> int getIdFromArrayListObjectByClass(ArrayList<T> arrayObject, U classFind) {
+        for (int i = 0; i < arrayObject.size(); i++) {
+            if (arrayObject.get(i).getClass() == classFind)
                 return i;
         }
         return -1;

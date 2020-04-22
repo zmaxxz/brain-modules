@@ -1,11 +1,12 @@
 package ua.zp.bainacad.lab14.employee;
 
-import ua.zp.bainacad.lab14.employee.position.Guard;
 import ua.zp.bainacad.lab14.human.Human;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.Objects;
 
-import static ua.zp.bainacad.MyUtil.getIdFromArrayObjectByObject;
+import static ua.zp.bainacad.MyUtil.getIdFromArrayListObjectByObject;
 
 public class Employee extends Human {
     private Date employmentDate;
@@ -16,27 +17,25 @@ public class Employee extends Human {
         super(fullName, phoneNumber);
     }
 
-    public void comeToWork(Human[] humansLine) {
-        int employeeIdInHumansLine=getIdFromArrayObjectByObject(humansLine, this);
-        if (employeeIdInHumansLine<0){
+    public <T> void comeToWork(ArrayList<T> humansLine) {
+        int employeeIdInHumansLine = getIdFromArrayListObjectByObject(humansLine, super.hashCode());
+        if (employeeIdInHumansLine < 0) {
             return;
         }
-        humansLine[employeeIdInHumansLine]=null;
+        humansLine.remove(employeeIdInHumansLine);
         isPresent = true;
-        System.out.println(getFullName() + " пришел на работу");
+        System.out.println("\t"+getFullName() + " пришел на работу");
+        System.out.println("\tЯ " + this.getClass().getSimpleName());
         sayHello();
-        System.out.println("Я "+this.getClass().getSimpleName()+'\n');
-
-
     }
 
     public void goForLunch() {
-        System.out.println("пошел на обед");
+        System.out.println("\t"+getFullName() +"пошел на обед");
+        sayGoodbye();
         isPresent = false;
     }
 
-    public void doWork() {
-
+    public void doWork(String str) {
     }
 
     public Date getEmploymentDate() {
@@ -71,5 +70,21 @@ public class Employee extends Human {
                 ", salary=" + salary +
                 ", isPresent=" + isPresent +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Employee)) return false;
+        if (!super.equals(o)) return false;
+        Employee employee = (Employee) o;
+        return Double.compare(employee.salary, salary) == 0 &&
+                isPresent == employee.isPresent &&
+                Objects.equals(employmentDate, employee.employmentDate);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), employmentDate, salary, isPresent);
     }
 }
