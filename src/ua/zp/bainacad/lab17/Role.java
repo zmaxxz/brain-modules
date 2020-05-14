@@ -27,7 +27,7 @@ public enum Role {
     /**
      * ANONYMOUS can buy goods and / or log in
      */
-    ANONYMOUS("Анонимный пользователь, может покупать товары и\\или авторизоваться");
+    ANONYMOUS("Анонимный пользователь, может покупать товары и или авторизоваться");
 
     /**
      * Describes rights of role
