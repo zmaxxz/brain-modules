@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class PlayRoom {
     public static void main(String[] args) throws IOException {
@@ -22,7 +23,48 @@ public class PlayRoom {
         virtualGameArrayList.add(Game.getVirtualGame("FIFA 12", Game.Genre.SPORT));
 
         GameConsole gameConsole = new GameConsole("Sony", "XC123QeWR");
-        System.out.println();
 
+        ((GameConsole.Gamepad)gameConsole.getSecondGamepad()).powerOn();
+
+        gameConsole.loadGame(diskArrayList.get(1).getData());
+        gameConsole.playGame();
+
+        ((GameConsole.Gamepad)gameConsole.getFirstGamepad()).powerOn();
+
+        gameConsole.loadGame(virtualGameArrayList.get(3).getData());
+        gameConsole.playGame();
+        System.out.println();
+        while (true) {
+            someDo(gameConsole);
+        }
+
+    }
+
+    public static void someDo(GameConsole gameConsole){
+        System.out.println("Что будем делать? (Помощь введите \"?\")");
+        Scanner in = new Scanner(System.in);
+        String str = in.nextLine();
+        switch (str.toLowerCase()) {
+            case "1":
+                ((GameConsole.Gamepad)gameConsole.getFirstGamepad()).powerOn();
+                break;
+            case "2":
+                ((GameConsole.Gamepad)gameConsole.getSecondGamepad()).powerOn();
+                break;
+            case "con":
+                gameConsole.powerOn();
+                break;
+            case "?":
+                System.out.println("1 - включение/выключение первого ждойстика");
+                System.out.println("2 - включение/выключение второго ждойстика");
+                System.out.println("con - включение/выключение консоли");
+                System.out.println("ld - список игровых дисков (для выбора)");
+                System.out.println("lм - список виртуальный игр (для выбора)");
+
+                break;
+            default:
+                System.out.println("Что-то пошло не так. Воспользуйтесь помощью.");
+                break;
+        }
     }
 }
