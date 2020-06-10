@@ -7,8 +7,8 @@ public class GameConsole implements Powered {
     private String brand;
     private String model;
     private String serial;
-    private Object firstGamepad;
-    private Object secondGamepad;
+    private Gamepad firstGamepad;
+    private Gamepad secondGamepad;
     private boolean isOn;
     private Game activeGame;
 
@@ -20,25 +20,25 @@ public class GameConsole implements Powered {
 
     }
 
-    public void loadGame(Game game){
-        System.out.printf("Игра %s загружается\n",game.getName());
-        this.activeGame=game;
+    public void loadGame(Game game) {
+        System.out.printf("Игра %s загружается\n", game.getName());
+        this.activeGame = game;
     }
 
-    public void playGame(){
-        System.out.println("Играем в "+this.activeGame.getName());
-        if(((Gamepad) this.firstGamepad).isOn){
-            ((Gamepad) this.firstGamepad).chargeLevel-=10;
-            System.out.printf("Заряд батареи firstGamepad - %.1f\n",((Gamepad) this.firstGamepad).chargeLevel);
-            if(((Gamepad) this.firstGamepad).chargeLevel==0){
-                ((Gamepad) this.firstGamepad).powerOff();
+    public void playGame() {
+        System.out.println("Играем в " + this.activeGame.getName());
+        if (this.firstGamepad.isOn) {
+            this.firstGamepad.chargeLevel -= 10;
+            System.out.printf("Заряд батареи firstGamepad - %.1f\n", this.firstGamepad.chargeLevel);
+            if (this.firstGamepad.chargeLevel == 0) {
+                this.firstGamepad.powerOff();
             }
         }
-        if(((Gamepad) this.secondGamepad).isOn){
-            ((Gamepad) this.secondGamepad).chargeLevel-=10;
-            System.out.printf("Заряд батареи secondGamepad - %.1f\n",((Gamepad) this.secondGamepad).chargeLevel);
-            if(((Gamepad) this.secondGamepad).chargeLevel==0){
-                ((Gamepad) this.secondGamepad).powerOff();
+        if (this.secondGamepad.isOn) {
+            this.secondGamepad.chargeLevel -= 10;
+            System.out.printf("Заряд батареи secondGamepad - %.1f\n", this.secondGamepad.chargeLevel);
+            if (this.secondGamepad.chargeLevel == 0) {
+                this.secondGamepad.powerOff();
             }
         }
         System.out.println();
@@ -46,14 +46,14 @@ public class GameConsole implements Powered {
 
     private void checkConnectedNumber() {
 
-        if (!((Gamepad) this.firstGamepad).isOn) {                      // if firstGamepad is off
-            if (((Gamepad) this.secondGamepad).isOn) {                  // and secondGamepad is on
-                ((Gamepad) this.secondGamepad).connectedNumber = 1;     // secondGamepad becomes the main
+        if (!this.firstGamepad.isOn) {                      // if firstGamepad is off
+            if (this.secondGamepad.isOn) {                  // and secondGamepad is on
+                this.secondGamepad.connectedNumber = 1;     // secondGamepad becomes the main
             } else {
 
             }
         } else {                                                        // if firstGamepad is on
-            ((Gamepad) this.secondGamepad).connectedNumber = 2;         // secondGamepad becomes secondary, even if turned off
+            this.secondGamepad.connectedNumber = 2;         // secondGamepad becomes secondary, even if turned off
         }
     }
 
@@ -62,10 +62,11 @@ public class GameConsole implements Powered {
     public void powerOn() throws PowerOnOffException {
         try {
             if (this.isOn == true) {
-                throw new PowerOnOffException();}
+                throw new PowerOnOffException("Выключаем консоль");
+            }
             this.isOn = true;
             System.out.println("Консоль включается");
-        }catch (PowerOnOffException e){
+        } catch (PowerOnOffException e) {
             this.powerOff();
         }
     }
@@ -76,12 +77,19 @@ public class GameConsole implements Powered {
         System.out.println("Консоль выключается");
     }
 
+    public boolean isOn() {
+        return isOn;
+    }
 
-    public Object getFirstGamepad() {
+    public void setOn(boolean on) {
+        isOn = on;
+    }
+
+    public Gamepad getFirstGamepad() {
         return firstGamepad;
     }
 
-    public Object getSecondGamepad() {
+    public Gamepad getSecondGamepad() {
         return secondGamepad;
     }
 

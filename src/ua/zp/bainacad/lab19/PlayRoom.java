@@ -24,17 +24,18 @@ public class PlayRoom {
 
         GameConsole gameConsole = new GameConsole("Sony", "XC123QeWR");
 
-        ((GameConsole.Gamepad)gameConsole.getSecondGamepad()).powerOn();
+        gameConsole.getSecondGamepad().powerOn();
 
         gameConsole.loadGame(diskArrayList.get(1).getData());
         gameConsole.playGame();
 
-        ((GameConsole.Gamepad)gameConsole.getFirstGamepad()).powerOn();
+        gameConsole.getFirstGamepad().powerOn();
 
         gameConsole.loadGame(virtualGameArrayList.get(3).getData());
         gameConsole.playGame();
         System.out.println();
-        while (true) {
+
+        while (gameConsole.isOn()) {
             someDo(gameConsole);
         }
 
@@ -46,10 +47,10 @@ public class PlayRoom {
         String str = in.nextLine();
         switch (str.toLowerCase()) {
             case "1":
-                ((GameConsole.Gamepad)gameConsole.getFirstGamepad()).powerOn();
+                gameConsole.getFirstGamepad().powerOn();
                 break;
             case "2":
-                ((GameConsole.Gamepad)gameConsole.getSecondGamepad()).powerOn();
+                gameConsole.getSecondGamepad().powerOn();
                 break;
             case "con":
                 gameConsole.powerOn();
@@ -64,7 +65,6 @@ public class PlayRoom {
                 break;
             default:
                 System.out.println("Что-то пошло не так. Воспользуйтесь помощью.");
-                break;
         }
     }
 }
